@@ -14,12 +14,15 @@ export default function RootLayout({ children }) {
   const header = (
     <header className='p-4 sm:p-8 flex items-center justify-between gap-4 '>
       <h1 className={'text-base sm:text-l textGradient '+fugaz.className}>Broodl</h1>
+      <div className='flex items-center justify-between'>
+        PLACEHOLDER CTA || STAT
+      </div>
     </header>
   )
 
   const footer = (
-    <footer className="p-4 sm:p-8">
-      ok.footer
+    <footer className="p-4 sm:p-8 grid place-items-center ">
+      <p className={'text-indigo-500 '+fugaz.className}>Create with 💛</p>
     </footer>
   )
 
