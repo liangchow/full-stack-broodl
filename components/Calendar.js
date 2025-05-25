@@ -1,5 +1,5 @@
 import React from 'react'
-import {baseRating, gradients} from '@/utils'
+import {baseRating, gradients, demoData} from '@/utils'
 
     const months = {'January': 'Jan', 'February': 'Feb', 'March': 'Mar', 'April': 'Apr', 'June': 'Jun', 
       'July': 'Jul', 'August': 'Aug', 'September': 'Sept', 'October': 'Oct', 'November': 'Nov', 'December': 'Dec'}
@@ -7,10 +7,10 @@ import {baseRating, gradients} from '@/utils'
     const dayList = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
 export default function Calendar(props) {
-  
+
   const {demo} = props
-  const year = 2024
-  const month = 'September'
+  const year = 2025
+  const month = 'May'
   const monthNow = new Date(year, Object.keys(months).indexOf(month), 1)
   const firstDayOfMonth = monthNow.getDay()
   const daysInMonth = new Date(year, Object.keys(month).indexOf(month)+1, 0).getDate()
@@ -18,7 +18,7 @@ export default function Calendar(props) {
   const daysToDisplay = firstDayOfMonth + daysInMonth
   const numRows = (Math.floor(daysToDisplay / 7)) + (daysToDisplay % 7 ? 1 : 0)
 
-  console.log(year, monthNow)
+  console.log(numRows)
 
   return (
     <div className='flex flex-col overflow-hidden gap-1'>
@@ -38,7 +38,11 @@ export default function Calendar(props) {
                 )
               }
 
-              let color = 
+              let color = demo ? 
+                  gradients.indigo[baseRating[dayIndex]] : 
+                  dayIndex in demoData ? 
+                  gradients.indigo[demoData[dayIndex]] : 
+                  'white'
 
 
               return (
