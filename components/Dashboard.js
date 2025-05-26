@@ -1,5 +1,6 @@
 import { Fugaz_One } from "next/font/google";
 import React from 'react'
+import Calendar from "./Calendar";
 
 const fugaz = Fugaz_One({ subsets: ["latin"], weight: ['400'] }); 
 
@@ -31,16 +32,16 @@ export default function Dashboard() {
           )})}
       </div>
       <h4 className={'text-5xl sm:text-6xl md:text-7xl text-center '+fugaz.className}>How do you <span className='textGradient '>feel</span> today?</h4>
-      <div className='grid grid-cols-2 sm:grid-cols-5 gap-4 '>
+      <div className='flex items-stretch flex-wrap gap-4 '>
         {Object.keys(moods).map((mood, moodIndex) => {
           return(
-            <button className={'flex flex-col gap-2 p-4 rounded-2xl purpleShadow duration-200 bg-indigo-50 hover:bg-[lavender] items-center '
-            + (moodIndex === 4 ? 'col-span-2 sm:col-span-1 ' : '')} key={moodIndex}>
+            <button className={'flex flex-col flex-1 gap-2 p-4 px-5 rounded-2xl purpleShadow duration-200 bg-indigo-50 hover:bg-[lavender] text-center items-center '} key={moodIndex}>
               <p className='text-4xl sm:text-5xl md:text-6xl '>{moods[mood]}</p>
-              <p className={'text-indigo-500 '+fugaz.className}>{mood}</p>
+              <p className={'text-indigo-500 text-xs sm:text-sm md:text-base '+fugaz.className}>{mood}</p>
             </button>
           )})}
       </div>
+      <Calendar />
     </div>
   )
 }
