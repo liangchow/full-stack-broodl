@@ -9,8 +9,8 @@ import {baseRating, gradients, demoData} from '@/utils'
 export default function Calendar(props) {
 
   const {demo} = props
-  const year = 2025
-  const month = 'May'
+  const year = 2024
+  const month = 'June'
   const monthNow = new Date(year, Object.keys(months).indexOf(month), 1)
   const firstDayOfMonth = monthNow.getDay()
   const daysInMonth = new Date(year, Object.keys(month).indexOf(month)+1, 0).getDate()
@@ -21,7 +21,7 @@ export default function Calendar(props) {
   console.log(numRows)
 
   return (
-    <div className='flex flex-col overflow-hidden gap-1'>
+    <div className='flex flex-col overflow-hidden gap-1 py-4 sm:py-6 md:py-10'>
       {[...Array(numRows).keys()].map((row, rowIndex)=>{
         return(
           <div key={rowIndex} className='grid grid-cols-7 gap-1'>
