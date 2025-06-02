@@ -1,4 +1,5 @@
-import React from 'react'
+'use client'
+import React, { useState } from 'react'
 import {baseRating, gradients, demoData} from '@/utils'
 
     const months = {'January': 'Jan', 'February': 'Feb', 'March': 'Mar', 'April': 'Apr', 'June': 'Jun', 
@@ -8,12 +9,25 @@ import {baseRating, gradients, demoData} from '@/utils'
 
 export default function Calendar(props) {
 
-  const {demo} = props
-  const year = 2024
-  const month = 'June'
-  const monthNow = new Date(year, Object.keys(months).indexOf(month), 1)
+  const {data, handleSetMood} = props
+
+  const now = new Date()
+  const currMonth = now.getMonth()
+  const [selectedMonth, setSelectedMonth] = useState(Object.keys(months)[currMonth])
+  // console.log('SELECTED MONTH: ',selectedMonth)
+  const [selectedYear, setSelectedYear] = useState(now.getFullYear())
+
+  function handleIncrementMonth(val){
+    // value +1 -1
+    // if we hit the bounds of the month, then adjust the year
+  }
+
+
+  // const year = 2024
+  // const month = 'June'
+  const monthNow = new Date(selectedYear, Object.keys(months).indexOf(selectedMonth), 1)
   const firstDayOfMonth = monthNow.getDay()
-  const daysInMonth = new Date(year, Object.keys(month).indexOf(month)+1, 0).getDate()
+  const daysInMonth = new Date(selectedYear, Object.keys(selectedMonth).indexOf(selectedMonth)+1, 0).getDate()
 
   const daysToDisplay = firstDayOfMonth + daysInMonth
   const numRows = (Math.floor(daysToDisplay / 7)) + (daysToDisplay % 7 ? 1 : 0)
