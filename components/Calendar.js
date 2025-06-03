@@ -1,21 +1,25 @@
 'use client'
 import React, { useState } from 'react'
-import {baseRating, gradients, demoData} from '@/utils'
+import {baseRating, gradients} from '@/utils'
 
-    const months = {'January': 'Jan', 'February': 'Feb', 'March': 'Mar', 'April': 'Apr', 'June': 'Jun', 
-      'July': 'Jul', 'August': 'Aug', 'September': 'Sept', 'October': 'Oct', 'November': 'Nov', 'December': 'Dec'}
-    const now = new Date()
-    const dayList = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+const months = {'January': 'Jan', 'February': 'Feb', 'March': 'Mar', 'April': 'Apr', 'June': 'Jun', 
+                'July': 'Jul', 'August': 'Aug', 'September': 'Sept', 'October': 'Oct', 'November': 'Nov', 'December': 'Dec'}
+// const now = new Date()
+const dayList = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
 export default function Calendar(props) {
 
-  const {data, handleSetMood} = props
-
+  const {demo, completeData, handleSetMood} = props
+  
   const now = new Date()
   const currMonth = now.getMonth()
   const [selectedMonth, setSelectedMonth] = useState(Object.keys(months)[currMonth])
   // console.log('SELECTED MONTH: ',selectedMonth)
   const [selectedYear, setSelectedYear] = useState(now.getFullYear())
+  
+  const numericMonth = Object.keys(months).indexOf(selectedMonth)
+  const data = completeData?.[selectedYear]?.[numericMonth] || {}
+  console.log('THIS MONTHS DATA: ', completeData?.[selectedYear]?.[numericMonth])
 
   function handleIncrementMonth(val){
     // value +1 -1
@@ -52,10 +56,10 @@ export default function Calendar(props) {
                 )
               }
 
-              let color = demoData ? 
+              let color = demo ? 
                   gradients.indigo[baseRating[dayIndex]] : 
-                  dayIndex in demoData ? 
-                  gradients.indigo[demoData[dayIndex]] : 
+                  dayIndex in data ? 
+                  gradients.indigo[data[dayIndex]] : 
                   'white'
 
 

@@ -75,7 +75,7 @@ export default function Dashboard() {
   }, [currentUser, userDataObj])
 
     if (loading){
-      <Loading />
+      return <Loading />
     }
 
     if (!currentUser){
@@ -107,7 +107,7 @@ export default function Dashboard() {
             </button>
           )})}
       </div>
-      <Calendar data={data} handleSetMood={handleSetMood} />
+      <Calendar completeData={data} handleSetMood={handleSetMood} />
     </div>
   )
 }
