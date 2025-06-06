@@ -1,11 +1,15 @@
 'use client'
 import React, { useState } from 'react'
 import {baseRating, gradients} from '@/utils'
+import { Fugaz_One } from 'next/font/google'
 
 const months = {'January': 'Jan', 'February': 'Feb', 'March': 'Mar', 'April': 'Apr', 'June': 'Jun', 
                 'July': 'Jul', 'August': 'Aug', 'September': 'Sept', 'October': 'Oct', 'November': 'Nov', 'December': 'Dec'}
 // const now = new Date()
+const monthArr = Object.keys(months)
 const dayList = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+
+const fugaz = Fugaz_One({ subsets: ["latin"], weight: ['400'] }); 
 
 export default function Calendar(props) {
 
@@ -13,17 +17,28 @@ export default function Calendar(props) {
   
   const now = new Date()
   const currMonth = now.getMonth()
-  const [selectedMonth, setSelectedMonth] = useState(Object.keys(months)[currMonth])
+  const [selectedMonth, setSelectedMonth] = useState(monthArr[currMonth])
   // console.log('SELECTED MONTH: ',selectedMonth)
   const [selectedYear, setSelectedYear] = useState(now.getFullYear())
   
-  const numericMonth = Object.keys(months).indexOf(selectedMonth)
+  const numericMonth = monthArr.indexOf(selectedMonth)
   const data = completeData?.[selectedYear]?.[numericMonth] || {}
   console.log('THIS MONTHS DATA: ', completeData?.[selectedYear]?.[numericMonth])
 
   function handleIncrementMonth(val){
     // value +1 -1
     // if we hit the bounds of the month, then adjust the year
+    if (numericMonth + val < 0){
+      // set month value = 11 and decrement the year
+      setSelectedYear(cuu => curr - 1)
+      setSelectedMonth(monthArr[monthArr.length - 1])
+    } else if (numericMonth + val > 11) {
+      // set month val = 0 and increment the year
+      setSelectedYear(cuu => curr + 1)
+      setSelectedMonth(monthArr[0])
+    } else {
+      setSelectedMonth(monthArr[numericMonth+val])
+    }
   }
 
 
@@ -39,6 +54,17 @@ export default function Calendar(props) {
   console.log(numRows)
 
   return (
+    <div className='flex flex-col gap-2'>
+      <div className='grid grid-cols-5 gap-4'>
+        <button onClick={() => {
+          handleIncrementMonth(-1)
+        }} className='mr-auto text-indigo-400 text-lg sm:text-xl duration-200 hover:opacity-60 '><i className='fa-solid fa-circle-chevron-left'></i></button>
+        <p className={'text-center capitalize textGradient col-span-3 ' + fugaz.className}>{selectedMonth}, {selectedYear}</p>
+        <button onClick={() => {
+          handleIncrementMonth(+1)
+        }} className='ml-auto text-indigo-400 text-lg sm:text-xl duration-200 hover:opacity-60 '><i className='fa-solid fa-circle-chevron-right'></i></button>
+      </div>
+
     <div className='flex flex-col overflow-hidden gap-1 py-4 sm:py-6 md:py-10'>
       {[...Array(numRows).keys()].map((row, rowIndex)=>{
         return(
@@ -72,6 +98,7 @@ export default function Calendar(props) {
           </div>
         )
       })}
+    </div>
     </div>
   )
 }

@@ -20,9 +20,9 @@ export default function RootLayout({ children }) {
       <Link href='/'>
       <h1 className={'text-base sm:text-xl textGradient '+fugaz.className}>Moodl</h1>
       </Link>
-      <div className='flex items-center justify-between'>
+      {/* <div className='flex items-center justify-between'>
         PLACEHOLDER CTA || STAT
-      </div>
+      </div> */}
     </header>
   )
 
