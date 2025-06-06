@@ -30,11 +30,11 @@ export default function Calendar(props) {
     // if we hit the bounds of the month, then adjust the year
     if (numericMonth + val < 0){
       // set month value = 11 and decrement the year
-      setSelectedYear(cuu => curr - 1)
+      setSelectedYear(curr => curr - 1)
       setSelectedMonth(monthArr[monthArr.length - 1])
     } else if (numericMonth + val > 11) {
       // set month val = 0 and increment the year
-      setSelectedYear(cuu => curr + 1)
+      setSelectedYear(curr => curr + 1)
       setSelectedMonth(monthArr[0])
     } else {
       setSelectedMonth(monthArr[numericMonth+val])
