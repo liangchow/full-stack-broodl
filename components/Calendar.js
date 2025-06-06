@@ -90,7 +90,7 @@ export default function Calendar(props) {
 
 
               return (
-                <div style={{background: color}} className={'text-xs sm:text-sm border border-solid p-2 flex items-center gap-2 justify-between rounded-lg ' + (isToday ? ' border-indigo-400' : ' border-indigo-100') + (color === ' white' ? ' text-indigo-400' : ' text-white')} key={dayOfWeekIndex}>
+                <div style={{background: color}} className={'text-xs sm:text-sm border border-solid p-2 flex items-center gap-2 justify-between rounded-lg ' + (isToday ? ' border-indigo-400' : ' border-indigo-100') + (color === 'white' ? ' text-indigo-400' : ' text-white')} key={dayOfWeekIndex}>
                 <p>{dayIndex}</p>
                 </div>
               )
