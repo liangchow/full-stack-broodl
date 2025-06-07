@@ -2,7 +2,7 @@ import { Fugaz_One, Open_Sans } from "next/font/google";
 import { AuthProvider } from "@/context/AuthContext";
 import Link from 'next/link'
 import "./globals.css";
-import Head from "./head";
+import Head from "Head";
 import Logout from "@/components/Logout";
 
 
