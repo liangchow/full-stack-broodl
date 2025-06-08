@@ -25,9 +25,6 @@ export default function RootLayout({ children }) {
         PLACEHOLDER CTA || STAT
       </div> */}
       <Logout />
-  
-
-
     </header>
   )
 
