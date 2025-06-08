@@ -52,7 +52,7 @@ export default function Login() {
       </div>
       <p className='text-center'>
         {isRegister ? 'Already have an account? ' : 'Don\'t have an account? '} 
-        <button onClick={() => setIsRegister(!isRegister)} className='text-indigo-600'>{isRegister ? 'Sign In' : 'Sign Up'}</button>
+        <button onClick={() => setIsRegister(!isRegister)} className='text-indigo-600 cursor-pointer '>{isRegister ? 'Sign In' : 'Sign Up'}</button>
       </p>
     </div>
   )

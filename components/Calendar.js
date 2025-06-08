@@ -58,11 +58,11 @@ export default function Calendar(props) {
       <div className='grid grid-cols-5 gap-4'>
         <button onClick={() => {
           handleIncrementMonth(-1)
-        }} className='mr-auto text-indigo-400 text-lg sm:text-xl duration-200 hover:opacity-60 '><i className='fa-solid fa-circle-chevron-left'></i></button>
+        }} className='mr-auto text-indigo-400 text-lg sm:text-xl duration-200 hover:opacity-60 cursor-pointer '><i className='fa-solid fa-circle-chevron-left'></i></button>
         <p className={'text-center capitalize textGradient col-span-3 ' + fugaz.className}>{selectedMonth}, {selectedYear}</p>
         <button onClick={() => {
           handleIncrementMonth(+1)
-        }} className='ml-auto text-indigo-400 text-lg sm:text-xl duration-200 hover:opacity-60 '><i className='fa-solid fa-circle-chevron-right'></i></button>
+        }} className='ml-auto text-indigo-400 text-lg sm:text-xl duration-200 hover:opacity-60 cursor-pointer '><i className='fa-solid fa-circle-chevron-right'></i></button>
       </div>
 
     <div className='flex flex-col overflow-hidden gap-1 py-4 sm:py-6 md:py-10'>
