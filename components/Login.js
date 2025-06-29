@@ -54,6 +54,9 @@ export default function Login() {
         {isRegister ? 'Already have an account? ' : 'Don\'t have an account? '} 
         <button onClick={() => setIsRegister(!isRegister)} className='text-indigo-600 cursor-pointer '>{isRegister ? 'Sign In' : 'Sign Up'}</button>
       </p>
+      <p className="text-sm bg-gradient-to-r from-orange-700 via-blue-500 to-green-400 text-transparent bg-clip-text animate-gradient">
+        Login with <span className="font-bold">test@testing.com</span> and <span className="font-bold">testing123</span> to see Dashboard 
+      </p>
     </div>
   )
 }
