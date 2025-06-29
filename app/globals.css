@@ -18,3 +18,18 @@
     transform: translate(3px, 3px);
     box-shadow: 0px 0px 1px 1px #E6E6FA;
 }
+
+@theme {
+  --animate-background: background-move ease infinite;
+
+  @keyframes background-move {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+}
