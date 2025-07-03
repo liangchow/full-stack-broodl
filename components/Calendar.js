@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import {baseRating, gradients} from '@/utils'
 import { Fugaz_One } from 'next/font/google'
 
-const months = {'January': 'Jan', 'February': 'Feb', 'March': 'Mar', 'April': 'Apr', 'June': 'Jun', 
+const months = {'January': 'Jan', 'February': 'Feb', 'March': 'Mar', 'April': 'Apr', 'May': 'May','June': 'Jun', 
                 'July': 'Jul', 'August': 'Aug', 'September': 'Sept', 'October': 'Oct', 'November': 'Nov', 'December': 'Dec'}
 // const now = new Date()
 const monthArr = Object.keys(months)
